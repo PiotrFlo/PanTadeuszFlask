@@ -1,13 +1,14 @@
-from flask import Flask
-app = Flask(name)
+from flask import Flask, render_template
 
-@app.route("/")
+app = Flask(__name__)
+
+@app.route('/')
 def index():
-    return "Hello World!"
+    return render_template('index.html')
 
-@app.route("/<name>")
-def hello(name):
-    return f"hello {name}"
+@app.route("/book/<id>")
+def book(id):
+    return render_template(f'k{id}.html')
 
-if name == "main":
+if __name__ == '__main__':
     app.run()
